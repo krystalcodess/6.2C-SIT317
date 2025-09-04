@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Family Learning Circle App - Empowering Immigrant Families</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #6f42c1 0%, #8b5cf6 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .main-headline {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .supporting-headline {
+            font-size: 1.4rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .hero-image {
+            width: 400px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            margin: 30px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px dashed rgba(255, 255, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-image::before {
+            content: "👨‍👩‍👧‍👦📚💻🌏";
+            font-size: 4rem;
+            opacity: 0.7;
+        }
+
+        .benefit-summary {
+            font-size: 1.2rem;
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        .cta-button {
+            background: #ff6b6b;
+            color: white;
+            padding: 18px 40px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin: 20px 10px;
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(255, 107, 107, 0.4);
+        }
+
+        .cta-secondary {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+
+        .cta-secondary:hover {
+            background: white;
+            color: #6f42c1;
+        }
+
+        .benefits-section {
+            padding: 80px 20px;
+            background: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: #6f42c1;
+            text-align: center;
+            margin-bottom: 50px;
+            font-weight: bold;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .benefit-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .benefit-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .benefit-title {
+            font-size: 1.4rem;
+            color: #6f42c1;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .social-proof {
+            padding: 80px 20px;
+            background: white;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 5px solid #6f42c1;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            color: #6f42c1;
+        }
+
+        .testimonial-role {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .stats-section {
+            background: #6f42c1;
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            .main-headline {
+                font-size: 2.5rem;
+            }
+
+            .supporting-headline {
+                font-size: 1.1rem;
+            }
+
+            .hero-image {
+                width: 300px;
+                height: 200px;
+            }
+
+            .cta-button {
+                padding: 15px 30px;
+                font-size: 1.1rem;
+                margin: 10px 5px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <!-- 1A) Main Headline -->
+            <h1 class="main-headline">Family Learning Circle</h1>
+
+            <!-- 1B) Supporting Headline -->
+            <p class="supporting-headline">Empowering immigrant families to overcome educational barriers through
+                AI-powered collaborative learning and community support</p>
+
+            <!-- 1C) Hero Shot -->
+            <div class="hero-image">
+                <!-- Placeholder for family learning image -->
+            </div>
+
+            <!-- 1D) Benefit Summary -->
+            <div class="benefit-summary">
+                Break the cycle of educational disadvantage. Our AI-powered platform connects immigrant families with
+                multilingual support, personalized learning paths, and community mentors to help your children succeed
+                in Australian schools.
+            </div>
+
+            <!-- 2) Call to Action -->
+            <a href="#signup" class="cta-button">Start Your Free Trial</a>
+            <a href="#benefits" class="cta-button cta-secondary">Learn More</a>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat">
+                    <div class="stat-number">39%</div>
+                    <div class="stat-label">NSW students from non-English homes</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">2.1M</div>
+                    <div class="stat-label">Australian families need language support</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">15+</div>
+                    <div class="stat-label">Languages supported</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3) Benefits Section -->
+    <section id="benefits" class="benefits-section">
+        <div class="container">
+            <h2 class="section-title">Why Families Choose Learning Circle</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <span class="benefit-icon">🌍</span>
+                    <h3 class="benefit-title">Real-Time Translation</h3>
+                    <p>Communicate with teachers and understand homework in your native language. No more language
+                        barriers holding your family back.</p>
+                </div>
+                <div class="benefit-card">
+                    <span class="benefit-icon">👨‍👩‍👧‍👦</span>
+                    <h3 class="benefit-title">Family Learning Together</h3>
+                    <p>Learn alongside your children with personalized family learning paths that grow everyone's
+                        confidence and skills.</p>
+                </div>
+                <div class="benefit-card">
+                    <span class="benefit-icon">🤝</span>
+                    <h3 class="benefit-title">Community Mentors</h3>
+                    <p>Connect with other immigrant families who've successfully navigated the Australian education
+                        system.</p>
+                </div>
+                <div class="benefit-card">
+                    <span class="benefit-icon">🎯</span>
+                    <h3 class="benefit-title">School Confidence</h3>
+                    <p>Practice parent-teacher conferences and school interactions in a safe, supportive environment.
+                    </p>
+                </div>
+                <div class="benefit-card">
+                    <span class="benefit-icon">🧠</span>
+                    <h3 class="benefit-title">AI-Powered Support</h3>
+                    <p>Get personalized recommendations and learning paths adapted to your family's unique needs and
+                        goals.</p>
+                </div>
+                <div class="benefit-card">
+                    <span class="benefit-icon">💰</span>
+                    <h3 class="benefit-title">Affordable Access</h3>
+                    <p>Quality education support for just $19-25/month - less than one tutoring session.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4) Social Proof Section -->
+    <section class="social-proof">
+        <div class="container">
+            <h2 class="section-title">What Families Are Saying</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial">
+                    <p class="testimonial-text">"Finally, I can help my daughter with her math homework! The translation
+                        feature and step-by-step guides have been a game-changer for our family."</p>
+                    <div class="testimonial-author">Mei Chen</div>
+                    <div class="testimonial-role">Mother of two, Sydney</div>
+                </div>
+                <div class="testimonial">
+                    <p class="testimonial-text">"The parent-teacher conference simulator gave me the confidence to
+                        advocate for my son's needs. I no longer feel lost in school meetings."</p>
+                    <div class="testimonial-author">Hassan Al-Ahmad</div>
+                    <div class="testimonial-role">Father of three, Melbourne</div>
+                </div>
+                <div class="testimonial">
+                    <p class="testimonial-text">"Learning Circle connected us with other Vietnamese families going
+                        through similar challenges. We're not alone anymore."</p>
+                    <div class="testimonial-author">Linh Nguyen</div>
+                    <div class="testimonial-role">Single mother, Brisbane</div>
+                </div>
+                <div class="testimonial">
+                    <p class="testimonial-text">"As a teacher, I've seen remarkable improvement in parent engagement
+                        since families started using this platform. It's bridging the gap beautifully."</p>
+                    <div class="testimonial-author">Sarah Thompson</div>
+                    <div class="testimonial-role">Primary School Teacher, NSW</div>
+                </div>
+                <div class="testimonial">
+                    <p class="testimonial-text">"The community aspect is incredible. We've formed lasting friendships
+                        with families who understand our journey. My kids love the group learning sessions."</p>
+                    <div class="testimonial-author">Raj Patel</div>
+                    <div class="testimonial-role">Parent and community mentor</div>
+                </div>
+                <div class="testimonial">
+                    <p class="testimonial-text">"This platform helped my family navigate the Australian education
+                        system. Now I'm confident helping other newly arrived families."</p>
+                    <div class="testimonial-author">Maria Rodriguez</div>
+                    <div class="testimonial-role">Parent and success story</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="hero-section" style="min-height: auto; padding: 60px 20px;">
+        <div class="container">
+            <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Ready to Empower Your Family's Education Journey?</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 30px; opacity: 0.9;">Join thousands of immigrant families who've
+                transformed their children's academic success</p>
+            <a href="#signup" class="cta-button" style="margin-right: 15px;">Start Free 30-Day Trial</a>
+            <a href="#demo" class="cta-button cta-secondary">Book a Demo</a>
+            <p style="font-size: 0.9rem; margin-top: 20px; opacity: 0.8;">No credit card required • Cancel anytime •
+                Available in 15+ languages</p>
+        </div>
+    </section>
+
+    <footer style="background: #333; color: white; text-align: center; padding: 40px 20px;">
+        <div class="container">
+            <p>&copy; 2024 Family Learning Circle App. Empowering immigrant families across Australia.</p>
+            <p style="margin-top: 10px; opacity: 0.7;">Created by Phuc Anh Thu Nguyen (Student ID: 223212228)</p>
+        </div>
+    </footer>
+</body>
+
+</html>
